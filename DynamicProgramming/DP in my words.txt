@@ -1,0 +1,16 @@
+Dynamic programming in my words (refer: http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=dynProg)
+-------------------------------
+
+DP solutions have a polynomial complexity which assures a much faster running time than other techniques like backtracking, brute-force etc. 
+	polynomial complexity - O(n ^ k) - belong to complexity class "P"
+	
+Backtracking complexity ??
+
+find an initial state, and initialize it to that initial state value which is hardcoded and intialize other states to either Integer.MAX or Integer.MIN based on the need.
+
+Recurrent relation
+-------------------
+
+Find how to define a state
+	1. the state of lower state is not changed when calculating the greater state. Eg., the coin problem where sum[0] = 0
+	2. the state of lower state gets changed when calculating the greater state. Eg., SRM 526.5 D-3 1000-point
