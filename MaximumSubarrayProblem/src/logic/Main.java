@@ -8,16 +8,16 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Integer[] input = {100, -1, 10};		
+		Integer[] input = {-100, -1, -10};		
 		System.out.println(findMaximumSubarray(input));
 		findMaximumSubarrayIndices(input);
 	}
 
 	public static Integer findMaximumSubarray(Integer[] input) {
-		Integer max_so_far = 0, max_ending_here = 0;
+		Integer max_so_far = Integer.MIN_VALUE, max_ending_here = 0;
 
 		for(int i = 0; i < input.length; i++) {
-			max_ending_here = Math.max(0, max_ending_here + input[i]);
+			max_ending_here = Math.max(input[i], max_ending_here + input[i]);
 			max_so_far = Math.max(max_so_far, max_ending_here);
 		}
 
@@ -25,13 +25,13 @@ public class Main {
 	}
 
 	public static void findMaximumSubarrayIndices(Integer[] input) {
-		Integer max_so_far = 0, max_ending_here = 0;
+		Integer max_so_far = Integer.MIN_VALUE, max_ending_here = input[0];
 		
-		Integer max_ending_here_start = -1, max_ending_here_end = -1;
-		Integer max_so_far_start = - 1, max_so_far_end = -1;
+		Integer max_ending_here_start = 0, max_ending_here_end = 0;
+		Integer max_so_far_start = 0, max_so_far_end = 0;
 		
-		for(int i = 0; i < input.length; i++) {
-			Integer temp =  Math.max(0, max_ending_here + input[i]);
+		for(int i = 1; i < input.length; i++) {
+			Integer temp =  Math.max(input[i], max_ending_here + input[i]);
 			if(temp > max_ending_here) {
 				if(max_ending_here == 0) 
 					max_ending_here_start = i;
