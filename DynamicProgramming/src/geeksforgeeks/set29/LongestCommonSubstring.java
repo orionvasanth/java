@@ -9,40 +9,40 @@ public class LongestCommonSubstring {
 	 */
 	public static void main(String[] args) {
 		LongestCommonSubstring commonSubstring = new LongestCommonSubstring();
-		/*commonSubstring.findCommonSuffixLengthofAllPrefixes(
-				"ABAB", "BABA");*/
-		commonSubstring.findCommonSuffixLengthofAllPrefixes("GeeksforGeeks", "GeeksQuiz");
+		commonSubstring.findCommonSuffixLengthofAllPrefixes("ABAB", "BABA");
+		commonSubstring.findCommonSuffixLengthofAllPrefixes("GeeksforGeeks",
+				"GeeksQuiz");
 	}
 
 	private int[][] dp;
-	
-	private void printAllLongestCommonSubstring(char[] str1, char[] str2){
+
+	private void printAllLongestCommonSubstring(char[] str1, char[] str2) {
 		int max = getLongestSuffix();
-		for(int i = 0; i < dp.length; i++) {
-			for(int j = 0; j < dp[i].length; j++) {
-				if(dp[i][j] == max) {
+		for (int i = 0; i < dp.length; i++) {
+			for (int j = 0; j < dp[i].length; j++) {
+				if (dp[i][j] == max) {
 					printSubstring(str1, i, max);
 				}
 			}
 		}
 	}
-	
+
 	private void printSubstring(char[] str, int index, int length) {
 		StringBuilder substring = new StringBuilder();
-		for(int i = 0; i < length; i++) {
-			substring.append(str[index - length + 1 + i]);			
+		for (int i = 0; i < length; i++) {
+			substring.append(str[index - length + 1 + i]);
 		}
 		System.out.println(substring);
 	}
-	
+
 	private int getLongestSuffix() {
 		int max = Integer.MIN_VALUE;
-		for(int i = 0; i < dp.length; i++) {
-			for(int j = 0; j < dp[i].length; j++) {
-				max=Math.max(max, dp[i][j]);				
+		for (int i = 0; i < dp.length; i++) {
+			for (int j = 0; j < dp[i].length; j++) {
+				max = Math.max(max, dp[i][j]);
 			}
 		}
-		
+
 		return max;
 	}
 
